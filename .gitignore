@@ -1,0 +1,5 @@
+client/node_modules
+server/node_modules
+.Ds_Store
+server/dist
+client/dist

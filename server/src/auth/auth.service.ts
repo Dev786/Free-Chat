@@ -29,11 +29,9 @@ export class AuthService {
     }
 
     async createToken(user: any) {
-        return {
-            accessToken: jwt.sign({
-                userId: user.id,
-            }, this.configService.get('JWT_SECRET_KEY'))
-        }
+        return jwt.sign({
+            userId: user.id,
+        }, this.configService.get('JWT_SECRET_KEY'))
     }
 
     async validateUserId(userId: string) {

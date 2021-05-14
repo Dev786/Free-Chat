@@ -28,6 +28,11 @@ export class AppGateway
     this.websocketService.setClientSocket(payload.userId, client);
   }
 
+  @SubscribeMessage('sendMessage')
+  sendMessage(@ConnectedSocket() client: Socket, @MessageBody() payload: Connect) {
+    
+  }
+
   afterInit(server: Server) {
     this.logger.log('Init');
   }

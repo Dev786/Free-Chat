@@ -39,7 +39,10 @@ export class UserService {
             this.userModel.updateOne({ email: loginRequest.email }, { online: true })
             return {
                 success: true,
-                data: await this.authService.createToken(user)
+                data: {
+                    userId: user.id,
+                    accessToken: await this.authService.createToken(user)
+                }
             };
         }
         return {

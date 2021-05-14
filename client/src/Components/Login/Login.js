@@ -16,7 +16,6 @@ const Login = () => {
             'email': email,
             'password': password
         }).then((response) => {
-            console.log("Response", response);
             localStorage.setItem('user', JSON.stringify(response.data.data));
             userDispatch('login');
         }).catch((error) => {
