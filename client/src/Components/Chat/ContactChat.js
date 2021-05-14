@@ -20,7 +20,7 @@ export default function ({ contact }) {
     const sendChat = () => {
         setChats([{
             message,
-            time: moment().format("hh:mm:ss A"),
+            time: moment().format("hh:mm A"),
             id: user.id
         }, ...chats]);
         setMessage('')
@@ -40,7 +40,7 @@ export default function ({ contact }) {
                 response.data.data.forEach((data) => {
                     messages.push({
                         message: data.message,
-                        time: moment(new Date(data.createdAt)).format("hh:mm:ss A"),
+                        time: moment(new Date(data.createdAt)).format("hh:mm A"),
                         id: message.senderId
                     });
                 })
