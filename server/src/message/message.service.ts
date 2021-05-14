@@ -45,8 +45,18 @@ export class MessageService {
             this.authService.validateUserId(message.senderId),
             this.authService.validateUserId(message.receiverId)
         ]);
+        console.log("message: ", message)
+        console.log("isValidSender: ", isValidSender, " isValidReceiver: ", isValidReceiver)
         if (isValidSender && isValidReceiver) {
             const response = this.messageModel.create(message);
+            return {
+                success: true,
+                data: response
+            }
+        }
+
+        return {
+            success: false
         }
     }
 

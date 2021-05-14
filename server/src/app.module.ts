@@ -13,6 +13,7 @@ import { AppGateway } from './app.gateway';
 import { KafkaModule } from './kafka/kafka.module';
 import { WebsocketModule } from './websocket/websocket.module';
 import { ConnectionController } from './user/connection/connection.controller';
+import { MessageController } from './message/message.controller';
 
 @Module({
   imports: [
@@ -41,7 +42,7 @@ export class AppModule implements NestModule {
         { path: '/user/login', method: RequestMethod.POST },
         { path: '/user/register', method: RequestMethod.POST }
       )
-      .forRoutes(UserController, ConnectionController)
+      .forRoutes(UserController, ConnectionController, MessageController)
       .apply()
   }
 }

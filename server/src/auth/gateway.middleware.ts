@@ -10,11 +10,12 @@ export function gatewayMiddleware(req: Request, res: Response, next: NextFunctio
             const JWT_SECRET_KEY = configService.get("JWT_SECRET_KEY");
             const token = req.headers.authorization.split(' ')[1];
             const tokenData: any = jwt.verify(token, JWT_SECRET_KEY);
-            console.log("tokenData: ", tokenData, "req: ",req);
             const userId = tokenData?.userId;
+            console.log('Method; ', req.method);
             if (req.method == 'GET') {
                 req.query.userId = userId;
             } else if (['POST', 'PUT'].includes(req.method)) {
+                console.log(req.body);
                 req.body.userId = userId;
             }
             next();
