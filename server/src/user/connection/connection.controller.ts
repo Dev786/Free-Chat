@@ -7,11 +7,12 @@ export class ConnectionController {
 
     }
 
-    @Post('/request/send/:to')
+    @Post('/request/send/')
     sendRequest(
         @Body('userId') sender: string,
-        @Param('to') receiver: string
+        @Body('to') receiver: string
     ) {
+        console.log(sender);
         return this.connectionService.sendRequest(sender, receiver);
     }
 

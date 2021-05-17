@@ -5,7 +5,7 @@ import { User, UserDocument } from 'src/Schemas/user.schema';
 import { LoginDTO } from 'src/user/DTO/login.request.dto';
 import * as jwt from 'jsonwebtoken';
 import { ConfigService } from 'src/config';
-
+import * as crypto from 'crypto';
 @Injectable()
 export class AuthService {
     constructor(
@@ -16,10 +16,12 @@ export class AuthService {
     }
 
     async validate(loginRequest: LoginDTO): Promise<any> {
+        // console.log(crypto.createHmac('sha256', loginRequest.password).digest('hex'));
         const user = await this.userModel.findOne({
             email: loginRequest.email,
-            password: loginRequest.password
+            password: crypto.createHmac('sha256', loginRequest.password).digest('hex')
         });
+
         if (user) {
             return user;
         }
@@ -27,11 +29,9 @@ export class AuthService {
     }
 
     async createToken(user: any) {
-        return {
-            accessToken: jwt.sign({
-                userId: user.id,
-            }, this.configService.get('JWT_SECRET_KEY'))
-        }
+        return jwt.sign({
+            userId: user.id,
+        }, this.configService.get('JWT_SECRET_KEY'))
     }
 
     async validateUserId(userId: string) {

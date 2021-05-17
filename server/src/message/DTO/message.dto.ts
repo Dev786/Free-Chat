@@ -1,11 +1,11 @@
-import { IsNotEmpty, MaxLength, MinLength } from "class-validator";
+import { IsNotEmpty, IsOptional, MaxLength, MinLength } from "class-validator";
 
 export class MessageDTO {
 
     @IsNotEmpty()
     receiverId: string;
 
-    @IsNotEmpty()
+    @IsOptional()
     senderId: string;
 
     @IsNotEmpty()

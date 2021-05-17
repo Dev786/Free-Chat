@@ -1,1 +1,0 @@
-{"version":3,"file":"kafka.module.js","sourceRoot":"","sources":["../../src/kafka/kafka.module.ts"],"names":[],"mappings":";;;;;;;;;AAAA,2CAAwC;AACxC,sCAA0C;AAC1C,mDAA+C;AAS/C,IAAa,WAAW,GAAxB,MAAa,WAAW;CAAI,CAAA;AAAf,WAAW;IAPvB,eAAM,CAAC;QACJ,OAAO,EAAE;YACL,qBAAY;SACf;QACD,SAAS,EAAE,CAAC,4BAAY,CAAC;QACzB,OAAO,EAAE,CAAC,4BAAY,CAAC;KAC1B,CAAC;GACW,WAAW,CAAI;AAAf,kCAAW"}

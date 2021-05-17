@@ -3,6 +3,7 @@ import React, { createContext, useReducer, useEffect } from 'react';
 
 const User = {
     token: '',
+    id: '',
     isAuthenticated: false
 }
 
@@ -13,7 +14,8 @@ const userReducer = (state, action) => {
             return {
                 ...state,
                 isAuthenticated: true,
-                token: user.accessToken
+                token: user.accessToken,
+                id: user.userId
             }
         case 'logout':
             localStorage.removeItem('user');
